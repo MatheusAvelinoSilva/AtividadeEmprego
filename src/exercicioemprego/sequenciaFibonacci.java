@@ -14,10 +14,9 @@ public class sequenciaFibonacci {
 
     public static void main(String[] args) {
 
-        int num1 = 1, num2 = 0;
+        int num1 = 1, num2 = 0, x = 1;
         int valorDigitado = Integer.parseInt(JOptionPane.showInputDialog("Digite Valor"));
-
-        String[] fibonacci = new String[valorDigitado + 1];
+        boolean pertence = false;
 
         if (valorDigitado == 0) {
 
@@ -25,23 +24,25 @@ public class sequenciaFibonacci {
 
         } else {
 
-            for (int i = 0; i < valorDigitado; i++) {
+            while (x <= valorDigitado) {
 
                 num1 = num1 + num2;
                 num2 = num1 - num2;
 
-                fibonacci[i] = String.valueOf(num1);
+                if (valorDigitado == num1) {
 
-                if (fibonacci[i].equals(String.valueOf(valorDigitado))) {
-
-                    JOptionPane.showMessageDialog(null, "Numero " + valorDigitado + " Pertence A Sequência Fibonacci ");
-
-                } else {
-
-                    JOptionPane.showMessageDialog(null, "Numero " + valorDigitado + " Não Pertence A Sequência Fibonacci ");
+                    pertence = true;
+                    break;
 
                 }
+
+                x++;
+
             }
+
+            JOptionPane.showMessageDialog(null, pertence == true ? "Numero " + valorDigitado + " Pertence A Sequência Fibonacci "
+                    : "Numero " + valorDigitado + " Não Pertence A Sequência Fibonacci ");
+
         }
     }
 }
